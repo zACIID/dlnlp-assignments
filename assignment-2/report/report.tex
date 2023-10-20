@@ -1,0 +1,26 @@
+\documentclass[12pt]{report}
+
+% Import utils
+\input{utils/settings.tex}
+\input{utils/commands.tex}
+\input{utils/json.tex}
+
+\begin{document}
+
+\input{title_page.tex}
+
+\tableofcontents
+\listoffigures
+% \listoftables
+
+\afterpage{\blankpage}
+
+\include{chapters/0-intro.tex}
+\include{chapters/1-theoretical-background.tex}
+\include{chapters/2-experimental-results.tex}
+\include{chapters/3-conclusions.tex}
+
+\bibliographystyle{unsrt}
+\bibliography{utils/ref}
+
+\end{document}

@@ -1,0 +1,73 @@
+% Report Formatting Commands
+% -------------------- Report Formatting Commands --------------------
+
+% Empty page
+\newcommand\blankpage{%
+    \null
+    \thispagestyle{empty}%
+    \addtocounter{page}{-1}%
+    \newpage}
+    
+% Title page infos
+\providecommand{\info}[2]
+{
+  \noindent
+    {\bf{#1}\\}
+    {#2\\}
+    \vspace{0.22mm}
+}
+
+% Keywords command
+\providecommand{\keywords}[1]
+{
+  \small	
+  \textbf{\textit{Keywords---}} #1
+}
+
+% -------------------- Highlighting/Commenting Commands --------------------
+
+\newcommand{\note}[1]{\textit{\textcolor{CadetBlue}{#1}}}
+\newcommand{\intuition}[1]{\textbf{\textcolor{RoyalBlue}{#1}}}
+\newcommand{\important}[1]{\textbf{\textcolor{Red}{#1}}}
+\newcommand{\highlight}[1]{\textcolor{Orange}{#1}}
+\newcommand{\impformula}[1]{\textbf{\textcolor{RedViolet}{#1}}}
+\newcommand{\example}[1]{\textit{\textcolor{Cerulean}{#1}}}
+\newcommand{\todo}[1]{\textcolor{Green}{\textbf{TODO:} #1}}
+
+% -------------------- Math Commands --------------------
+
+% Notable number sets
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+
+% -------------------- Algorithms ans Pseudocode Utils --------------------
+% List of Algorithms
+\renewcommand{\listalgorithmname}{Pseudocode}
+
+% Algorithms break page
+
+\makeatletter
+\newenvironment{breakablealgorithm}
+  {% \begin{breakablealgorithm}
+    \begin{center}
+      \refstepcounter{algorithm}% New algorithm
+      \hrule height.8pt depth0pt \kern2pt% \@fs@pre for \@fs@ruled
+      \renewcommand{\caption}[2][\relax]{% Make a new \caption
+        {\raggedright\textbf{\fname@algorithm~\thealgorithm} ##2\par}%
+        \ifx\relax##1\relax % #1 is \relax
+          \addcontentsline{loa}{algorithm}{\protect\numberline{\thealgorithm}##2}%
+        \else % #1 is not \relax
+          \addcontentsline{loa}{algorithm}{\protect\numberline{\thealgorithm}##1}%
+        \fi
+        \kern2pt\hrule\kern2pt
+      }
+  }{% \end{breakablealgorithm}
+    \kern2pt\hrule\relax% \@fs@post for \@fs@ruled
+    \end{center}
+  }
+\makeatother
+
+\algrenewcommand\algorithmicrequire{\textbf{Input:}}
+\algrenewcommand\algorithmicensure{\textbf{Output:}}
